@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 public class UIScore : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private Text text;
 
     private int currentScore = 0;
     // Start is called before the first frame update

@@ -9,6 +9,7 @@ public class UIMenu : MonoBehaviour
     public Action onResume;
 
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject backGroundMenuPanel;
 
     void Start()
@@ -24,16 +25,44 @@ public class UIMenu : MonoBehaviour
 
     public void OpenMenuPanel() 
     {
-        backGroundMenuPanel.SetActive(true);
+        OpenbackGroundMenuPanel();
         menuPanel.SetActive(true);
+    }
+
+    public void OpenLosePanel()
+    {
+        OpenbackGroundMenuPanel();
+        losePanel.SetActive(true);
+    }
+
+    public void OpenbackGroundMenuPanel()
+    {
+        backGroundMenuPanel.SetActive(true);
+    }
+
+    public void CloseLosePanel()
+    {
+        ClosebackGroundMenuPanel();
+        losePanel.SetActive(false);
+    }
+
+    public void ClosebackGroundMenuPanel()
+    {
+        backGroundMenuPanel.SetActive(false);
     }
 
     public void CloseMenuPanel() 
     {
         menuPanel.SetActive(false);
-        backGroundMenuPanel.SetActive(false);
+        ClosebackGroundMenuPanel();
     }
 
+    public void CloseAllPanel() 
+    {
+        CloseLosePanel();
+        CloseMenuPanel();
+        ClosebackGroundMenuPanel();
+    }
     public void Menu() 
     {
         onOpenMenuPanel?.Invoke();

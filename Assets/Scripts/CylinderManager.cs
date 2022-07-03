@@ -7,7 +7,7 @@ public class CylinderManager : MonoBehaviour
     [SerializeField] private MeshRenderer[] _bloks;
     [SerializeField] private Material _block;
     [SerializeField] private Material _rightBlock;
-
+        
 
     private int _random1;
     private int _random2;

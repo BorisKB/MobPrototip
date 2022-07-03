@@ -17,9 +17,9 @@ public class Manager : MonoBehaviour
     {
 
         player.onEnterRightBlock += OnHitCurrentBlock;
-        player.onGameOver += OpenMenu;
+        player.onGameOver += OpenLosePanel;
         uiManager.onStartNewGame += NewGame;
-        uiManager.onOpenMenuPanel += OpenMenu;
+        uiManager.onOpenMenuPanel += OpenMenuPanel;
         uiManager.onResume += UnPause;
 
         _cylinderControl.SetRightBlocks();
@@ -28,9 +28,9 @@ public class Manager : MonoBehaviour
     private void OnDestroy() 
     {
         uiManager.onStartNewGame -= NewGame;
-        player.onGameOver -= OpenMenu;
+        player.onGameOver -= OpenLosePanel;
         player.onEnterRightBlock -= OnHitCurrentBlock;
-        uiManager.onOpenMenuPanel -= OpenMenu;
+        uiManager.onOpenMenuPanel -= OpenMenuPanel;
         uiManager.onResume -= UnPause;
     }
 
@@ -51,18 +51,24 @@ public class Manager : MonoBehaviour
     {
         uiScore.SetNewScore();
         player.StartPlayer();
-        uiManager.CloseMenuPanel();
+        uiManager.CloseAllPanel();
     }
 
-    private void OpenMenu() 
+    private void OpenMenuPanel() 
     {
         uiManager.OpenMenuPanel();
         player.FreezePlayer();
     }
 
+    private void OpenLosePanel()
+    {
+        uiManager.OpenLosePanel();
+        player.FreezePlayer();
+    }
+
     private void UnPause() 
     {
-        uiManager.CloseMenuPanel();
+        uiManager.CloseAllPanel();
         player.UnFreezePlayer();
     }
 }
